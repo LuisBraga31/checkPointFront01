@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import CardList from './components/CardList';
 
-
 function App() {
 
   const [coresLista, setCoresLista] = useState([]);
@@ -10,30 +9,36 @@ function App() {
   const [corCodigo, setCorCodigo] = useState('');
 
 
-  const validacao = document.querySelector('.ativado');
-  const inputNome = document.querySelector('#corNome');
-  const inputCodigo = document.querySelector('#corCodigo');
+  const validacao = document.querySelector('.error');
   const inputForm = document.querySelector('.form');
+  const inputs = document.querySelectorAll('input');
   
   const handleCoresSubmit = (event) => {
     
     event.preventDefault();
 
-    if(corNome.length > 3 && corCodigo.length == 7) {
+    if(corNome.length >= 3 && corCodigo.length == 7) {
       
       const novaCor = {nome: corNome.trim(), codigo: corCodigo.trim()};
       setCoresLista( (state) => [...state, novaCor] );
-      
-      inputNome.style.border = "none";
-      inputCodigo.style.border = "none";
+      setCorNome("");
+      setCorCodigo("");
+
+      inputs.forEach(input => {
+        input.style.border = "none";
+      });
       inputForm.style.border = "none";
       validacao.style.display = "none";
+      inputForm.style.background = "#202020";
 
     } else {
 
-      inputNome.style.border = "1px solid #FF7070";
-      inputCodigo.style.border = "1px solid #FF7070";
+      inputs.forEach(input => {
+        input.style.border = "1px solid #FF7070";
+      });
+
       inputForm.style.border = "1px solid #FF7070";
+      inputForm.style.background = "rgba(255, 0, 0, 0.1)";
       validacao.style.display = "block";
 
     }
@@ -77,14 +82,14 @@ function App() {
 
       <div className="form_button">
         <button type="submit" 
-        disabled={corNome === '' && corCodigo === ''}>
+        disabled={corNome === '' || corCodigo === ''}>
           Adicionar
         </button>
       </div>
 
     </form>
 
-    <p className="ativado"> Por favor, verifique os dados inseridos no formulário </p>
+    <p className="error"> Por favor, verifique os dados inseridos no formulário </p>
 
     <section id="card" className="listaCores">
 
