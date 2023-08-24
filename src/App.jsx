@@ -31,9 +31,9 @@ function App() {
 
     } else {
 
-      inputNome.style.border = "1px solid red";
-      inputCodigo.style.border = "1px solid red";
-      inputForm.style.border = "1px solid red";
+      inputNome.style.border = "1px solid #FF7070";
+      inputCodigo.style.border = "1px solid #FF7070";
+      inputForm.style.border = "1px solid #FF7070";
       validacao.style.display = "block";
 
     }
@@ -44,7 +44,9 @@ function App() {
     <main className="app">
      
     <form className="form" onSubmit={handleCoresSubmit}>
-      <h3> Adicione uma nova Cor </h3>
+      
+      <h3> ADICIONE UMA NOVA COR </h3>
+      
       <div className="form_input">
         
         <div className="input">
@@ -65,12 +67,11 @@ function App() {
             type="text" 
             name="corCodigo" 
             id="corCodigo" 
-            placeholder="Digite o código da cor"
+            placeholder="Insira sua cor no formato Hexadecimal"
             onChange={(event) => setCorCodigo(event.target.value)}
             value={corCodigo}
           />
         </div>
-
 
       </div>
 
@@ -87,7 +88,7 @@ function App() {
 
     <section id="card" className="listaCores">
 
-        <h3> Cores Favoritas </h3>
+        <h3> CORES FAVORITAS </h3>
 
         <div className="listaContent">
           
