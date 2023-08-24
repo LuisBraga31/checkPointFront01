@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import Card from './components/Card';
+import CardList from './components/CardList';
+
 
 function App() {
 
   const [coresLista, setCoresLista] = useState([]);
   const [corNome, setCorNome] = useState('');
   const [corCodigo, setCorCodigo] = useState('');
+
+
   const validacao = document.querySelector('.ativado');
   const inputNome = document.querySelector('#corNome');
   const inputCodigo = document.querySelector('#corCodigo');
@@ -17,24 +20,28 @@ function App() {
     event.preventDefault();
 
     if(corNome.length > 3 && corCodigo.length == 7) {
+      
       const novaCor = {nome: corNome.trim(), codigo: corCodigo.trim()};
       setCoresLista( (state) => [...state, novaCor] );
+      
       inputNome.style.border = "none";
       inputCodigo.style.border = "none";
       inputForm.style.border = "none";
       validacao.style.display = "none";
 
     } else {
+
       inputNome.style.border = "1px solid red";
       inputCodigo.style.border = "1px solid red";
       inputForm.style.border = "1px solid red";
       validacao.style.display = "block";
+
     }
 
   }
 
   return (
-    <main className="App">
+    <main className="app">
      
     <form className="form" onSubmit={handleCoresSubmit}>
       <h3> Adicione uma nova Cor </h3>
@@ -74,7 +81,6 @@ function App() {
         </button>
       </div>
 
-
     </form>
 
     <p className="ativado"> Por favor, verifique os dados inseridos no formulário </p>
@@ -85,15 +91,7 @@ function App() {
 
         <div className="listaContent">
           
-          <ul>
-              { coresLista && (
-                coresLista.map((cores, index) => {
-                  return (
-                    <Card key={index} cores={cores} />
-                  )
-                })
-              )}
-          </ul>
+          <CardList coresLista={coresLista}/>
 
         </div>
 

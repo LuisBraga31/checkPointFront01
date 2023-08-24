@@ -1,18 +1,8 @@
-.App {
+.app {
     margin: 80px 100px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.form {
-    background-color: #202020;
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 35px;
 }
 
  h3 {
@@ -22,6 +12,18 @@
     font-style: normal;
     font-weight: 900;
     line-height: normal;
+}
+
+/* Form */
+
+.form {
+    background-color: #202020;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
 }
 
 .form_input {
@@ -72,7 +74,16 @@
 .form button:hover {
     opacity: 1;
 }
+
+/* Informe de Erro */
+
+.ativado {
+    display: none;
+    color: #FF7070;
+}
+
 /* Lista de Cores */
+
 .listaCores {
     display: flex;
     flex-direction: column;
@@ -85,7 +96,4 @@
     gap: 15px;
 }
 
-.ativado {
-    display: none;
-    color: #FF7070;
-}
+
